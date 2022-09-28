@@ -2,15 +2,16 @@ version: '3'
 services:
 
   dns_server:
-    # restart: always
+    restart: always
     container_name: dns_server
     build:
       context: ./dns_server
       dockerfile: Dockerfile
     networks:
-      mynetwork:
+      default_bridge:
         ipv4_address: 172.18.0.2
-    
+    dns:
+        - 172.18.0.2
 
   client:
     container_name: client
@@ -18,13 +19,15 @@ services:
       context: ./client
       dockerfile: Dockerfile
     networks:
-      mynetwork:
+      default_bridge:
         ipv4_address: 172.18.0.3
     dns:
-      - 8.8.8.8
-
+        - 172.18.0.2
 
 networks: 
-  mynetwork: 
-    external: 
-      name: my-network 
+  default_bridge: 
+    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.0.0/16

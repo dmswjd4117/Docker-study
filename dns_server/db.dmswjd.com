@@ -6,5 +6,5 @@ $TTL    86400
             1209600     ; Expire
               86400 )   ; Negative Cache TTL
 @   IN  NS  localhost.
-@   IN  A   1.1.1.1
-blog   IN  A   1.1.1.1
+@   IN  A   172.18.0.2
+blog   IN  A   172.18.0.2

@@ -9,6 +9,7 @@ RUN apt-get update \
     net-tools \
     curl \
     iputils-ping \ 
-    bind9 
+    bind9 \
+    telnet
 
 ENTRYPOINT ["/bin/bash",  "-c", "while :; do sleep 10; done"]
