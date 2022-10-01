@@ -1,18 +1,57 @@
 version: '3'
 services:
 
+  # dns 서버
   dns_server:
+    hostname: dns_server
     restart: always
     container_name: dns_server
     build:
       context: ./dns_server
       dockerfile: Dockerfile
+    volumes:
+      - ./dns_server/db:/etc/bind/mydb
     networks:
       default_bridge:
         ipv4_address: 172.18.0.2
     dns:
         - 172.18.0.2
+    
+    
 
+  # 메일서버
+  nn_server:
+    hostname: mail.nn.com
+    container_name: nn_server
+    build:
+      context: ./nn_server
+      dockerfile: Dockerfile
+    networks:
+      default_bridge:
+        ipv4_address: 172.18.0.4
+    dns:
+        - 172.18.0.2
+    extra_hosts:
+        - "localhost:127.0.0.1"
+        - "gg.com:172.18.0.5"
+  
+
+  gg_server:
+    hostname: mail.gg.com
+    container_name: gg_server
+    build:
+      context: ./gg_server
+      dockerfile: Dockerfile
+    networks:
+      default_bridge:
+        ipv4_address: 172.18.0.5
+    dns:
+        - 172.18.0.2
+    extra_hosts:
+        - "localhost:127.0.0.1"
+        - "nn.com:172.18.0.4"
+
+  # 클라이언트
   client:
     container_name: client
     build:
@@ -31,3 +70,6 @@ networks:
       driver: default
       config:
       - subnet: 172.18.0.0/16
+
+
+# docker-compose up --build -d
