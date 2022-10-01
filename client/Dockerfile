@@ -12,4 +12,6 @@ RUN apt-get update \
     bind9 \
     telnet
 
-ENTRYPOINT ["/bin/bash",  "-c", "while :; do sleep 10; done"]
+ADD bootstrap.sh bootstrap.sh 
+
+ENTRYPOINT ["/bin/bash", "bootstrap.sh"]
