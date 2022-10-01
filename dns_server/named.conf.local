@@ -1,4 +1,14 @@
 zone "dmswjd.com" { 
 	type master; 
-	file "/etc/bind/db.dmswjd.com";
+	file "/etc/bind/mydb/db.dmswjd.com";
+};
+
+zone "gg.com" { 
+	type master; 
+	file "/etc/bind/mydb/db.gg.com";
+};
+
+zone "nn.com" { 
+	type master; 
+	file "/etc/bind/mydb/db.nn.com";
 };

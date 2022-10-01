@@ -18,7 +18,9 @@ COPY named.conf.options /etc/bind/
 
 COPY named.conf.local /etc/bind/
 
-COPY db.dmswjd.com /etc/bind/
+COPY named.conf /etc/bind/
+
+# COPY ./db/* /etc/bind/
 
 COPY index.html /var/www/html/index.html
 
