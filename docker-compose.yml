@@ -14,8 +14,6 @@ services:
     networks:
       default_bridge:
         ipv4_address: 172.18.0.2
-    dns:
-        - 172.18.0.2
     
     
 
@@ -29,12 +27,6 @@ services:
     networks:
       default_bridge:
         ipv4_address: 172.18.0.4
-    dns:
-        - 172.18.0.2
-    extra_hosts:
-        - "localhost:127.0.0.1"
-        - "gg.com:172.18.0.5"
-  
 
   gg_server:
     hostname: mail.gg.com
@@ -45,11 +37,6 @@ services:
     networks:
       default_bridge:
         ipv4_address: 172.18.0.5
-    dns:
-        - 172.18.0.2
-    extra_hosts:
-        - "localhost:127.0.0.1"
-        - "nn.com:172.18.0.4"
 
   # 클라이언트
   client:
@@ -60,8 +47,6 @@ services:
     networks:
       default_bridge:
         ipv4_address: 172.18.0.3
-    dns:
-        - 172.18.0.2
 
 networks: 
   default_bridge: 
@@ -71,5 +56,3 @@ networks:
       config:
       - subnet: 172.18.0.0/16
 
-
-# docker-compose up --build -d

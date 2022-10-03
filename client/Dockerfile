@@ -9,7 +9,6 @@ RUN apt-get update \
     net-tools \
     curl \
     iputils-ping \ 
-    bind9 \
     telnet
 
 ADD bootstrap.sh bootstrap.sh 
