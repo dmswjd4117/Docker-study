@@ -21,9 +21,7 @@ services:
   nn_server:
     hostname: mail.nn.com
     container_name: nn_server
-    build:
-      context: ./nn_server
-      dockerfile: Dockerfile
+    image: tenisten0110/nn_server
     networks:
       default_bridge:
         ipv4_address: 172.18.0.4
@@ -31,9 +29,7 @@ services:
   gg_server:
     hostname: mail.gg.com
     container_name: gg_server
-    build:
-      context: ./gg_server
-      dockerfile: Dockerfile
+    image: tenisten0110/gg_server
     networks:
       default_bridge:
         ipv4_address: 172.18.0.5
